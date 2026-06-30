@@ -1,0 +1,23 @@
+
+---
+
+## **File 10: render.yaml** (Optional - for Render deployment)
+
+```yaml
+services:
+  - type: web
+    name: newsletter-signup
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: MAILCHIMP_API_KEY
+        sync: false
+      - key: MAILCHIMP_AUDIENCE_ID
+        sync: false
+      - key: MAILCHIMP_SERVER_PREFIX
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
